@@ -71,7 +71,9 @@ function googleDocExportNCSUA11y() {
             if(pathArray[i]=='ccc'){
                 urlFlag=true;
                 var keyParameter = urlVars['key'];
-                newPath += 'ccc?key=' + keyParameter.substr(0,keyParameter.lastIndexOf('#')) + '&output=xls';
+                
+                // sometimes the URL has a '#' in it that needs to be striped, and sometimes it doesn't
+                newPath += 'ccc?key=' + (keyParameter.indexOf('#')==-1?keyParameter:keyParameter.substr(0,keyParameter.lastIndexOf('#')))+ '&output=xls';
                 stopProcessing = true;
             }
         }
