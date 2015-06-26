@@ -27,7 +27,7 @@ function googleDocExportNCSUA11y() {
             case 'document':
                 docType='document';
                 break;
-            case 'spreadsheet':
+            case 'spreadsheets':
                 docType='spreadsheet';
                 break;
             case 'presentation':
@@ -68,12 +68,9 @@ function googleDocExportNCSUA11y() {
                 urlFlag=true;
             }
         }else if(docType=='spreadsheet'){
-            if(pathArray[i]=='ccc'){
+            if(pathArray[i]=='spreadsheets'){
                 urlFlag=true;
-                var keyParameter = urlVars['key'];
-                
-                // sometimes the URL has a '#' in it that needs to be striped, and sometimes it doesn't
-                newPath += 'ccc?key=' + (keyParameter.indexOf('#')==-1?keyParameter:keyParameter.substr(0,keyParameter.lastIndexOf('#')))+ '&output=xls';
+                newPath += pathArray[i] + '/d/' + pathArray[i+2] + '/export?format=xlsx&id=' + pathArray[i+2];
                 stopProcessing = true;
             }
         }
